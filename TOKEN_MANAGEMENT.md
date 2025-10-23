@@ -69,8 +69,12 @@ All token operations are logged to:
 ## Token Lifecycle
 
 1. **Initialization**: Token manager starts and fetches initial token
-2. **Automatic Refresh**: Every 1 minute, token is refreshed automatically
-3. **Proactive Refresh**: If token expires within 30 seconds, immediate refresh is triggered
+2. **Automatic Refresh**:
+   - **Testing**: Every 1 minute
+   - **Production**: Every 9 minutes
+3. **Proactive Refresh**:
+   - **Testing**: If token expires within 30 seconds
+   - **Production**: If token expires within 2 minutes
 4. **Error Recovery**: Failed refreshes are retried with exponential backoff
 
 ## Deployment on Render

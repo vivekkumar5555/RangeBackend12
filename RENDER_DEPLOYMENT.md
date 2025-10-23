@@ -109,8 +109,9 @@ Token operations are also logged to `logs/token-logs.txt` (if file system is ava
 
 ### 6. Token Refresh Schedule
 
-- **Automatic Refresh**: Every 1 minute
-- **Proactive Refresh**: When token expires within 30 seconds
+- **Testing Environment**: Every 1 minute
+- **Production Environment**: Every 9 minutes
+- **Proactive Refresh**: When token expires within 2 minutes (production) or 30 seconds (testing)
 - **Error Recovery**: Exponential backoff for failed attempts
 - **Rate Limit Handling**: 2-minute delay for Zoho rate limits
 
