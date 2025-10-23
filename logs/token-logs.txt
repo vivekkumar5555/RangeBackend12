@@ -19,3 +19,37 @@
 [2025-10-23T05:29:46.863Z] [INFO] ✅ Token refreshed successfully in 1042ms
 [2025-10-23T05:29:46.864Z] [INFO] 📅 Token expires at: 2025-10-23T06:29:46.863Z
 [2025-10-23T05:29:46.864Z] [INFO] ⏰ Token expires in: 60 minutes
+[2025-10-23T05:46:06.442Z] [INFO] 🚀 Initializing token manager...
+[2025-10-23T05:46:06.450Z] [INFO] 🔄 Refreshing access token...
+[2025-10-23T05:46:07.969Z] [INFO] ✅ Token refreshed successfully in 1519ms
+[2025-10-23T05:46:07.970Z] [INFO] 📅 Token expires at: 2025-10-23T06:46:07.969Z
+[2025-10-23T05:46:07.970Z] [INFO] ⏰ Token expires in: 60 minutes
+[2025-10-23T05:46:07.970Z] [INFO] ⏰ Starting automatic token refresh every 9 minutes
+[2025-10-23T05:46:07.971Z] [INFO] ✅ Token manager initialized successfully
+[2025-10-23T05:55:07.989Z] [INFO] 🔄 Refreshing access token...
+[2025-10-23T05:55:08.974Z] [INFO] ✅ Token refreshed successfully in 985ms
+[2025-10-23T05:55:08.975Z] [INFO] 📅 Token expires at: 2025-10-23T06:55:08.974Z
+[2025-10-23T05:55:08.978Z] [INFO] ⏰ Token expires in: 60 minutes
+[2025-10-23T06:03:58.240Z] [INFO] 🧪 [TESTING] 🚀 Initializing token manager (attempt 1/5)...
+[2025-10-23T06:03:58.243Z] [INFO] 🧪 [TESTING] 🔄 Refreshing access token...
+[2025-10-23T06:03:59.200Z] [INFO] 🧪 [TESTING] ✅ Token refreshed successfully in 957ms
+[2025-10-23T06:03:59.201Z] [INFO] 🧪 [TESTING] 📅 Token expires at: 2025-10-23T07:03:59.200Z
+[2025-10-23T06:03:59.202Z] [INFO] 🧪 [TESTING] ⏰ Token expires in: 60 minutes
+[2025-10-23T06:03:59.202Z] [INFO] 🧪 [TESTING] ⏰ Starting automatic token refresh every 1 minute(s)
+[2025-10-23T06:03:59.203Z] [INFO] 🧪 [TESTING] ✅ Token manager initialized successfully
+[2025-10-23T06:04:09.788Z] [INFO] 🧪 [TESTING] 🛑 Token refresh stopped
+[2025-10-23T06:04:13.817Z] [INFO] 🧪 [TESTING] 🚀 Initializing token manager (attempt 1/5)...
+[2025-10-23T06:04:13.819Z] [INFO] 🧪 [TESTING] 🔄 Refreshing access token...
+[2025-10-23T06:04:14.750Z] [INFO] 🧪 [TESTING] ✅ Token refreshed successfully in 931ms
+[2025-10-23T06:04:14.752Z] [INFO] 🧪 [TESTING] 📅 Token expires at: 2025-10-23T07:04:14.750Z
+[2025-10-23T06:04:14.752Z] [INFO] 🧪 [TESTING] ⏰ Token expires in: 60 minutes
+[2025-10-23T06:04:14.753Z] [INFO] 🧪 [TESTING] ⏰ Starting automatic token refresh every 1 minute(s)
+[2025-10-23T06:04:14.754Z] [INFO] 🧪 [TESTING] ✅ Token manager initialized successfully
+[2025-10-23T06:05:14.757Z] [INFO] 🧪 [TESTING] 🔄 Refreshing access token...
+[2025-10-23T06:05:15.664Z] [INFO] 🧪 [TESTING] ✅ Token refreshed successfully in 907ms
+[2025-10-23T06:05:15.665Z] [INFO] 🧪 [TESTING] 📅 Token expires at: 2025-10-23T07:05:15.664Z
+[2025-10-23T06:05:15.666Z] [INFO] 🧪 [TESTING] ⏰ Token expires in: 60 minutes
+[2025-10-23T06:06:14.761Z] [INFO] 🧪 [TESTING] 🔄 Refreshing access token...
+[2025-10-23T06:06:15.736Z] [INFO] 🧪 [TESTING] ✅ Token refreshed successfully in 975ms
+[2025-10-23T06:06:15.737Z] [INFO] 🧪 [TESTING] 📅 Token expires at: 2025-10-23T07:06:15.736Z
+[2025-10-23T06:06:15.737Z] [INFO] 🧪 [TESTING] ⏰ Token expires in: 60 minutes

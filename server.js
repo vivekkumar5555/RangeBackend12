@@ -91,6 +91,46 @@ app.get("/api/token/status", (req, res) => {
   }
 });
 
+// Health check endpoint for monitoring
+app.get("/api/health", (req, res) => {
+  try {
+    const tokenStatus = tokenManager.getTokenStatus();
+    const healthStatus = {
+      status: "healthy",
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+      memory: process.memoryUsage(),
+      token: {
+        hasToken: tokenStatus.hasToken,
+        isExpired: tokenStatus.isExpired,
+        minutesUntilExpiry: tokenStatus.minutesUntilExpiry
+      }
+    };
+    
+    res.status(200).json(healthStatus);
+  } catch (error) {
+    res.status(500).json({
+      status: "unhealthy",
+      timestamp: new Date().toISOString(),
+      error: error.message
+    });
+  }
+});
+
+// Root endpoint
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Range Backend API is running",
+    timestamp: new Date().toISOString(),
+    endpoints: {
+      health: "/api/health",
+      token: "/api/token",
+      tokenRefresh: "/api/token/refresh",
+      tokenStatus: "/api/token/status"
+    }
+  });
+});
+
 try {
   app.listen(PORT, () => {
     console.log(`🚀 Server connected to port ${PORT}`);
@@ -98,10 +138,37 @@ try {
     console.log(`   GET  /api/token - Get current token`);
     console.log(`   POST /api/token/refresh - Manually refresh token`);
     console.log(`   GET  /api/token/status - Get token status`);
+    console.log(`   GET  /api/health - Health check`);
+    console.log(`   GET  / - Root endpoint`);
   });
 } catch (error) {
   console.log("❌ ERROR IN connecting", error.message);
 }
+
+// Graceful shutdown handling
+process.on('SIGTERM', () => {
+  console.log('🛑 SIGTERM received, shutting down gracefully...');
+  tokenManager.stop();
+  process.exit(0);
+});
+
+process.on('SIGINT', () => {
+  console.log('🛑 SIGINT received, shutting down gracefully...');
+  tokenManager.stop();
+  process.exit(0);
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException', (error) => {
+  console.error('❌ Uncaught Exception:', error);
+  tokenManager.stop();
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
+  // Don't exit on unhandled rejections in production
+});
 
 // Export tokenManager for use in other modules
 export { tokenManager };
