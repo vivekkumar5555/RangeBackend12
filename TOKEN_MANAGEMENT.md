@@ -30,30 +30,38 @@ NODE_ENV=production
 ## API Endpoints
 
 ### Get Current Token
+
 ```
 GET /api/token
 ```
+
 Returns the current access token and its status.
 
 ### Manually Refresh Token
+
 ```
 POST /api/token/refresh
 ```
+
 Manually triggers a token refresh.
 
 ### Get Token Status
+
 ```
 GET /api/token/status
 ```
+
 Returns detailed token status including expiry information.
 
 ## Logging
 
 All token operations are logged to:
+
 - **Console**: Real-time logs with emojis for easy identification
 - **File**: `logs/token-logs.txt` for persistent logging
 
 ### Log Levels
+
 - 🚀 **INFO**: Normal operations
 - ⚠️ **WARN**: Warnings (e.g., token expiring soon)
 - ❌ **ERROR**: Errors and failures
@@ -61,13 +69,14 @@ All token operations are logged to:
 ## Token Lifecycle
 
 1. **Initialization**: Token manager starts and fetches initial token
-2. **Automatic Refresh**: Every 9 minutes, token is refreshed automatically
-3. **Proactive Refresh**: If token expires within 2 minutes, immediate refresh is triggered
+2. **Automatic Refresh**: Every 1 minute, token is refreshed automatically
+3. **Proactive Refresh**: If token expires within 30 seconds, immediate refresh is triggered
 4. **Error Recovery**: Failed refreshes are retried with exponential backoff
 
 ## Deployment on Render
 
 1. Set environment variables in Render dashboard:
+
    - `ZOHO_REFRESH_TOKEN`
    - `ZOHO_CLIENT_ID`
    - `ZOHO_CLIENT_SECRET`
@@ -81,11 +90,13 @@ All token operations are logged to:
 ## Monitoring
 
 Check token status by calling:
+
 ```bash
 curl https://your-app.onrender.com/api/token/status
 ```
 
 This will return:
+
 ```json
 {
   "success": true,

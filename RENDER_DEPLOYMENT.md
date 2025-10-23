@@ -28,10 +28,13 @@ ZOHO_REDIRECT_URI=https://crm.zoho.in/
 After deployment, you can monitor your token management system using these endpoints:
 
 #### Health Check
+
 ```bash
 GET https://your-app.onrender.com/api/health
 ```
+
 Returns:
+
 ```json
 {
   "status": "healthy",
@@ -47,11 +50,13 @@ Returns:
 ```
 
 #### Token Status
+
 ```bash
 GET https://your-app.onrender.com/api/token/status
 ```
 
 #### Manual Token Refresh
+
 ```bash
 POST https://your-app.onrender.com/api/token/refresh
 ```
@@ -59,23 +64,29 @@ POST https://your-app.onrender.com/api/token/refresh
 ### 4. Common Issues and Solutions
 
 #### Issue: Token not refreshing after first time
+
 **Causes:**
+
 1. Rate limiting from Zoho API
 2. Environment variables not set correctly
 3. Server restarting frequently
 
 **Solutions:**
+
 - ✅ **Rate Limiting**: The system now handles this automatically with exponential backoff
 - ✅ **Environment Variables**: Ensure all Zoho credentials are set in Render dashboard
 - ✅ **Server Stability**: Added graceful shutdown handling
 
 #### Issue: Server crashes on startup
+
 **Causes:**
+
 1. Missing dependencies
 2. Invalid environment variables
 3. Port conflicts
 
 **Solutions:**
+
 - ✅ **Dependencies**: All required packages are in package.json
 - ✅ **Environment**: Added validation and fallback values
 - ✅ **Port**: Uses Render's PORT environment variable
@@ -83,7 +94,9 @@ POST https://your-app.onrender.com/api/token/refresh
 ### 5. Logging and Monitoring
 
 #### Console Logs in Render
+
 The system logs all token operations to console. In Render dashboard, you can see:
+
 - 🚀 Token manager initialization
 - 🔄 Token refresh attempts
 - ✅ Successful token refreshes
@@ -91,12 +104,13 @@ The system logs all token operations to console. In Render dashboard, you can se
 - ⏰ Automatic refresh schedule
 
 #### Log File
+
 Token operations are also logged to `logs/token-logs.txt` (if file system is available).
 
 ### 6. Token Refresh Schedule
 
-- **Automatic Refresh**: Every 9 minutes
-- **Proactive Refresh**: When token expires within 2 minutes
+- **Automatic Refresh**: Every 1 minute
+- **Proactive Refresh**: When token expires within 30 seconds
 - **Error Recovery**: Exponential backoff for failed attempts
 - **Rate Limit Handling**: 2-minute delay for Zoho rate limits
 
@@ -112,6 +126,7 @@ Token operations are also logged to `logs/token-logs.txt` (if file system is ava
 If tokens are not refreshing:
 
 1. **Check Environment Variables**:
+
    ```bash
    curl https://your-app.onrender.com/api/health
    ```
@@ -125,6 +140,7 @@ If tokens are not refreshing:
 ### 9. Performance Optimization
 
 The system is optimized for production:
+
 - ✅ **Memory Efficient**: Single token manager instance
 - ✅ **Error Resilient**: Continues operation even with token failures
 - ✅ **Rate Limit Aware**: Respects Zoho API limits
