@@ -53,3 +53,12 @@
 [2025-10-23T06:06:15.736Z] [INFO] 🧪 [TESTING] ✅ Token refreshed successfully in 975ms
 [2025-10-23T06:06:15.737Z] [INFO] 🧪 [TESTING] 📅 Token expires at: 2025-10-23T07:06:15.736Z
 [2025-10-23T06:06:15.737Z] [INFO] 🧪 [TESTING] ⏰ Token expires in: 60 minutes
+[2025-10-23T06:07:14.765Z] [INFO] 🧪 [TESTING] 🔄 Refreshing access token...
+[2025-10-23T06:07:15.604Z] [INFO] 🧪 [TESTING] ✅ Token refreshed successfully in 839ms
+[2025-10-23T06:07:15.608Z] [INFO] 🧪 [TESTING] 📅 Token expires at: 2025-10-23T07:07:15.604Z
+[2025-10-23T06:07:15.609Z] [INFO] 🧪 [TESTING] ⏰ Token expires in: 60 minutes
+[2025-10-23T06:08:14.777Z] [INFO] 🧪 [TESTING] 🔄 Refreshing access token...
+[2025-10-23T06:08:15.810Z] [INFO] 🧪 [TESTING] ✅ Token refreshed successfully in 1033ms
+[2025-10-23T06:08:15.811Z] [INFO] 🧪 [TESTING] 📅 Token expires at: 2025-10-23T07:08:15.810Z
+[2025-10-23T06:08:15.811Z] [INFO] 🧪 [TESTING] ⏰ Token expires in: 60 minutes
+[2025-10-23T06:09:03.072Z] [INFO] 🧪 [TESTING] 🛑 Token refresh stopped
