@@ -14,8 +14,6 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-
-
 // api
 app.use("/api/post", postRouter);
 
@@ -24,12 +22,12 @@ app.get("/api/token", async (req, res) => {
   try {
     const token = tokenManager.getToken();
     const status = tokenManager.getTokenStatus();
-    
+
     if (!token) {
       return res.status(400).json({
         success: false,
         message: "No token available",
-        status
+        status,
       });
     }
 
@@ -37,13 +35,13 @@ app.get("/api/token", async (req, res) => {
       success: true,
       message: "Token retrieved successfully",
       token,
-      status
+      status,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       message: "Failed to retrieve token",
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -51,26 +49,26 @@ app.get("/api/token", async (req, res) => {
 app.post("/api/token/refresh", async (req, res) => {
   try {
     const result = await tokenManager.manualRefresh();
-    
+
     if (result.success) {
       res.status(200).json({
         success: true,
         message: result.message,
         token: result.token,
-        status: tokenManager.getTokenStatus()
+        status: tokenManager.getTokenStatus(),
       });
     } else {
       res.status(400).json({
         success: false,
         message: result.message,
-        error: result.error
+        error: result.error,
       });
     }
   } catch (error) {
     res.status(500).json({
       success: false,
       message: "Token refresh failed",
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -80,13 +78,13 @@ app.get("/api/token/status", (req, res) => {
     const status = tokenManager.getTokenStatus();
     res.status(200).json({
       success: true,
-      status
+      status,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       message: "Failed to get token status",
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -103,16 +101,16 @@ app.get("/api/health", (req, res) => {
       token: {
         hasToken: tokenStatus.hasToken,
         isExpired: tokenStatus.isExpired,
-        minutesUntilExpiry: tokenStatus.minutesUntilExpiry
-      }
+        minutesUntilExpiry: tokenStatus.minutesUntilExpiry,
+      },
     };
-    
+
     res.status(200).json(healthStatus);
   } catch (error) {
     res.status(500).json({
       status: "unhealthy",
       timestamp: new Date().toISOString(),
-      error: error.message
+      error: error.message,
     });
   }
 });
@@ -126,8 +124,8 @@ app.get("/", (req, res) => {
       health: "/api/health",
       token: "/api/token",
       tokenRefresh: "/api/token/refresh",
-      tokenStatus: "/api/token/status"
-    }
+      tokenStatus: "/api/token/status",
+    },
   });
 });
 
@@ -146,27 +144,27 @@ try {
 }
 
 // Graceful shutdown handling
-process.on('SIGTERM', () => {
-  console.log('🛑 SIGTERM received, shutting down gracefully...');
+process.on("SIGTERM", () => {
+  console.log("🛑 SIGTERM received, shutting down gracefully...");
   tokenManager.stop();
   process.exit(0);
 });
 
-process.on('SIGINT', () => {
-  console.log('🛑 SIGINT received, shutting down gracefully...');
+process.on("SIGINT", () => {
+  console.log("🛑 SIGINT received, shutting down gracefully...");
   tokenManager.stop();
   process.exit(0);
 });
 
 // Handle uncaught exceptions
-process.on('uncaughtException', (error) => {
-  console.error('❌ Uncaught Exception:', error);
+process.on("uncaughtException", (error) => {
+  console.error("❌ Uncaught Exception:", error);
   tokenManager.stop();
   process.exit(1);
 });
 
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("❌ Unhandled Rejection at:", promise, "reason:", reason);
   // Don't exit on unhandled rejections in production
 });
 

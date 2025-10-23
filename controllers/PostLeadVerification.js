@@ -67,9 +67,9 @@ const PostLeadVerification = async (req, res) => {
     const token = tokenManager.getToken();
     if (!token) {
       console.error("❌ No valid token available for Zoho API request");
-      return res.status(500).json({ 
+      return res.status(500).json({
         error: "Authentication token not available",
-        message: "Please try again in a moment" 
+        message: "Please try again in a moment",
       });
     }
 
